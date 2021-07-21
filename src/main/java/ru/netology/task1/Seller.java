@@ -8,14 +8,9 @@ public class Seller {
     }
 
     public synchronized void receiveCar() {
-        try {
-            System.out.println(Thread.currentThread().getName() + " выпустил машину");
-            shop.getCars().add(new Car());
-            notify();
-            Thread.sleep(Main.CAR_PRODUCTION_TIME);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        System.out.println(Thread.currentThread().getName() + " выпустил машину");
+        shop.getCars().add(new Car());
+        notify();
     }
 
     public synchronized Car sellCar() {
@@ -23,13 +18,12 @@ public class Seller {
             System.out.println(Thread.currentThread().getName() + " зашел в автосалон");
             while (shop.getCars().size() == 0) {
                 System.out.println("Машин нет\n");
-                Thread.sleep(Main.WAITING_TIME);
                 wait();
             }
             System.out.println(Thread.currentThread().getName() + " уехал на новеньком авто\n");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } catch (InterruptedException ignored) {
+            ignored.getStackTrace();
         }
-        return shop.getCars().remove();
+        return shop.getCars().poll();
     }
 }
