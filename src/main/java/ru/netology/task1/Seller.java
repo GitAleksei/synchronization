@@ -10,10 +10,9 @@ public class Seller {
     public synchronized void receiveCar() {
         try {
             System.out.println(Thread.currentThread().getName() + " выпустил машину");
-            Thread.sleep(1000);
             shop.getCars().add(new Car());
-            System.out.println("Продавец: Прием машины завершен");
             notify();
+            Thread.sleep(Main.CAR_PRODUCTION_TIME);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -23,10 +22,10 @@ public class Seller {
         try {
             System.out.println(Thread.currentThread().getName() + " зашел в автосалон");
             while (shop.getCars().size() == 0) {
-                System.out.println("Продавец: Не могу продать. Машин нет\n");
+                System.out.println("Машин нет\n");
+                Thread.sleep(Main.WAITING_TIME);
                 wait();
             }
-            Thread.sleep(500);
             System.out.println(Thread.currentThread().getName() + " уехал на новеньком авто\n");
         } catch (InterruptedException e) {
             e.printStackTrace();
