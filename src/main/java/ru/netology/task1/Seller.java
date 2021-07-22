@@ -15,10 +15,7 @@ public class Seller {
 
     public synchronized Car sellCar() throws InterruptedException{
         System.out.println(Thread.currentThread().getName() + " зашел в автосалон");
-        while (shop.getCars().size() == 0) {
-            if (Thread.currentThread().isInterrupted()) {
-                return shop.getCars().poll();
-            }
+        while (shop.getCars().size() == 0 && !Thread.currentThread().isInterrupted()) {
             System.out.println("Машин нет\n");
             wait();
         }
