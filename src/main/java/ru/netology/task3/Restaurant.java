@@ -6,6 +6,7 @@ import java.util.Queue;
 public class Restaurant {
     Hall hall = new Hall(this);
     Queue<Order> orders = new ArrayDeque<>();
+    Queue<Dish> dishes = new ArrayDeque<>();
 
     public void takeOrder() throws InterruptedException {
         hall.takeOrder();
@@ -21,5 +22,9 @@ public class Restaurant {
 
     public Queue<Order> getOrders() {
         return orders;
+    }
+
+    public Queue<Dish> getDishes() {
+        return dishes;
     }
 }

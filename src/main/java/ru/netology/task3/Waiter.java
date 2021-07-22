@@ -13,7 +13,6 @@ public class Waiter implements Runnable {
             System.out.println(Thread.currentThread().getName() + " на работе!");
             while (!Thread.currentThread().isInterrupted()) {
                 restaurant.processingOrder();
-                Thread.sleep(Main.TIMEOUT_FOR_WAITER);
             }
         } catch (InterruptedException ignored) {
         }

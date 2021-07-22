@@ -1,12 +1,9 @@
 package ru.netology.task3;
 
-import sun.awt.windows.ThemeReader;
-
 public class Main {
     static final int COOKING_TIME = 1_000;
-    static final int TIMEOUT_VISITOR = 10;
+    static final int TIMEOUT_VISITOR = 100;
     static final int EATING_TIME = 1_000;
-    static final int TIMEOUT_FOR_WAITER = 500;
     static final int TIMEOUT_FOR_COOK = 500;
     static final int NUMBER_OF_VISITOR = 5;
     static final int NUMBER_OF_WAITER = 3;
