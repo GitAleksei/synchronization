@@ -1,9 +1,7 @@
 package ru.netology.task1;
 
-import java.util.concurrent.ExecutorService;
-
 public class Main {
-    static final int NUMBER_OF_CARS = 4;
+    static final int NUMBER_OF_CARS = 10;
     static final int CAR_PRODUCTION_TIME = 2_000;
     static final int WAITING_TIME = 1_500;
 
@@ -20,9 +18,9 @@ public class Main {
 
         try {
             producerThread.join();
-        } catch (InterruptedException e) {
-            e.getStackTrace();
+        } catch (InterruptedException ignored) {
         }
-        consumerGroup.destroy();
+
+        consumerGroup.interrupt();
     }
 }

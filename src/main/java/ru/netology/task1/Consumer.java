@@ -15,8 +15,6 @@ public class Consumer implements Runnable {
                 shop.sellCar();
             }
         } catch (InterruptedException ignored) {
-        } finally {
-            System.out.println(Thread.currentThread().getName());
         }
     }
 }

@@ -7,7 +7,7 @@ public class Shop {
     Seller seller = new Seller(this);
     Queue<Car> cars = new ArrayDeque<>();
 
-    public Car sellCar() {
+    public Car sellCar() throws InterruptedException {
         return seller.sellCar();
     }
 

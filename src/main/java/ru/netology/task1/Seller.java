@@ -13,17 +13,17 @@ public class Seller {
         notify();
     }
 
-    public synchronized Car sellCar() {
-        try {
-            System.out.println(Thread.currentThread().getName() + " зашел в автосалон");
-            while (shop.getCars().size() == 0) {
-                System.out.println("Машин нет\n");
-                wait();
+    public synchronized Car sellCar() throws InterruptedException{
+        System.out.println(Thread.currentThread().getName() + " зашел в автосалон");
+        while (shop.getCars().size() == 0) {
+            if (Thread.currentThread().isInterrupted()) {
+                return shop.getCars().poll();
             }
-            System.out.println(Thread.currentThread().getName() + " уехал на новеньком авто\n");
-        } catch (InterruptedException ignored) {
-            ignored.getStackTrace();
+            System.out.println("Машин нет\n");
+            wait();
         }
+        System.out.println(Thread.currentThread().getName() + " уехал на новеньком авто\n");
+
         return shop.getCars().poll();
     }
 }

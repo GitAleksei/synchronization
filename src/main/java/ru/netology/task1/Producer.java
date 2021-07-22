@@ -13,8 +13,7 @@ public class Producer implements Runnable {
             shop.acceptCar();
             try {
                 Thread.sleep(Main.CAR_PRODUCTION_TIME);
-            } catch (InterruptedException e) {
-                e.getStackTrace();
+            } catch (InterruptedException ignored) {
             }
         }
     }
